@@ -17,7 +17,7 @@ def main():
     print("\nTHIS IS THE STOCK ANALYSIS PROGRAM.")
     while True:
         try:
-            n_clusters = int(input("\nEnter the number of clusters for K-Means (between 1 and 10): "))
+            n_clusters = int(input("\nEnter the number of clusters (between 1 and 10): "))
             if 1 <= n_clusters <= 10:
                 break
             else:
@@ -47,19 +47,17 @@ def main():
     X = tesla_data_scaled[['Open', 'High', 'Low', 'Volume']]
     y = tesla_data_scaled['Close']
 
-    # Split the data into training / testing sets with dynamic randomness
     random_seed = np.random.randint(1, 1000)  
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=random_seed)
-
 
     linear_model = LinearRegression()
     linear_model.fit(X_train, y_train)
 
-    # Predict and evaluate
+
     y_pred = linear_model.predict(X_test)
     mse = mean_squared_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
-    print(f"Linear Regression MSE: {mse}")
+    print(f"\nLinear Regression MSE: {mse}")
     print(f"Linear Regression R2 Score: {r2}")
 
     # Visualization of Linear Regression Results
