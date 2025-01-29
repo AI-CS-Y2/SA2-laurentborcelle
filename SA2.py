@@ -27,11 +27,7 @@ def main():
 
  
     file_path = 'TESLA.csv'
-    try:
-        tesla_data = pd.read_csv(file_path)
-    except FileNotFoundError:
-        print("Error: File not found. Please check the file path and try again.")
-        return
+    tesla_data = pd.read_csv(file_path)
 
    
     tesla_data['Date'] = pd.to_datetime(tesla_data['Date'])
